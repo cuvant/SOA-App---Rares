@@ -1,0 +1,4 @@
+$("#delete_dashboard").html("#{j render partial: "shared/delete_record_modal", locals: {record: @dashboard, where_to_go: "#{dashboard_path}", as_js: false}}");
+$("#delete_dashboard").removeClass('hidden');
+$("#delete_record_modal").removeClass("hidden");
+$("#delete_record_modal").modal('show');

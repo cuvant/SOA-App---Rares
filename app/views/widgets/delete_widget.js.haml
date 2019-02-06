@@ -1,0 +1,4 @@
+$("#widget_content_div").html("#{j render partial: "shared/delete_record_modal", locals: {record: @widget, where_to_go: "#{widget_path}", as_js: true}}");
+$("#widget_content_div").removeClass('hidden');
+$("#delete_record_modal").removeClass("hidden");
+$("#delete_record_modal").modal('show');

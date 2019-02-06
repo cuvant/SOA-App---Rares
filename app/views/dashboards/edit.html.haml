@@ -1,0 +1,13 @@
+.hpanel
+  .panel-body
+    %h2
+      %span{id: "dashboard_name_#{@dashboard.id}"}
+        = @dashboard.name
+      .pull-right
+        = link_to "Live Feed", dashboard_path(id: @dashboard.id), target: '_blank', class: "btn btn-sm #{@widgets.present? ? "btn-success" : "btn-warning"}", id: "feed_button"
+        = link_to "Dashboards List", dashboards_path(page: params[:page]), data: {disable_with: "Working..."}, class: "btn btn-default btn-sm"
+      
+    
+    = render partial: "widgets/widgets_table/widgets_list", locals: { widgets: @widgets }
+
+#widget_content_div.hidden

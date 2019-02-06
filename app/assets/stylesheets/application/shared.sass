@@ -1,0 +1,25 @@
+@import colors
+
+.flash-container
+  z-index: 9999
+  position: fixed
+  bottom: 0
+  font-size: 24px
+  width: 100%
+  .flash
+    padding: 10px
+    text-align: center
+    margin-bottom: 0px
+    color: white
+    &.notice
+      background-color: $notice-color
+    &.alert
+      background-color: $notice-color
+    &.error
+      background-color: $link-red
+
+.margin-top-100
+  margin-top: 100px
+
+.fileupload-preview
+  line-height: 67px !important

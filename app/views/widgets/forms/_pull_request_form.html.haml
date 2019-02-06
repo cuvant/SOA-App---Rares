@@ -1,0 +1,64 @@
+= form_for @widget, validate: true, remote: true, html: {id: "widget_form"} do |f|
+  = f.hidden_field :type
+  = f.hidden_field :dashboard_id
+  
+  .row
+    .control-group
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        #credential_errors.hidden
+    .clear
+    
+    .control-group
+      
+      .col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+        = f.label :repository, "Repository", class: "control-label"
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6
+        = f.text_field :repository, class: "form-control", autocomplete: :off
+      .col-lg-4.col-md-4.col-sm-4.col-xs-4
+        %div{class: "control-label", style: "text-align: left;"}
+          = "e.g. 'DashboardsRepo'"
+    
+    .clear
+
+    .control-group
+      
+      .col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+        = f.label :user, "User", class: "control-label"
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6
+        = f.text_field :user, class: "form-control", autocomplete: :off
+      .col-lg-4.col-md-4.col-sm-4.col-xs-4
+        %div{class: "control-label", style: "text-align: left;"}
+          = "e.g. 'John'"
+    
+    .clear
+    
+    .control-group
+      
+      .col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+        = f.label :oauth_token, "Access Token", class: "control-label"
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6
+        = f.text_field :oauth_token, class: "form-control", autocomplete: :off
+      .col-lg-4.col-md-4.col-sm-4.col-xs-4
+        %div{class: "control-label", style: "text-align: left;"}
+          = "e.g. '3e07368ea9e7859d652f'"
+    
+    .clear
+    
+    .control-group
+      
+      .col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+        = f.label :state, "State", class: "control-label"
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6
+        = f.select(:state, [["Open", "open"], ["All", "all"], ["Closed", "closed"]], {}, {class: "form-control"})
+    
+    .clear
+    
+  = render partial: "widgets/forms/association_tabs", locals: { f: f }
+
+  %br
+  .row
+    .text-center
+      .control-group.text-center
+        .controls.inline
+          = f.submit "Save Widget", class: "btn btn-custom", data: {disable_with: "Working..."}, id: "widget_submit_button"
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Cancel

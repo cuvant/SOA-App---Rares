@@ -1,0 +1,8 @@
+- if @dashboard.errors.blank?
+  $("#new_dashboard_modal").modal('hide');
+  $('.modal-backdrop').remove();
+  $("#dashboard_name_#{@dashboard.id}").html("#{@dashboard.name}");
+  
+  $(".flash-container-zone").html("#{j render partial: "shared/flash_notice", locals: {flash: flash}}").show().fadeOut(7000);
+$(document).ready(window.ready);
+$(document).on("page:load", window.ready);

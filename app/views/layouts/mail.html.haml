@@ -1,0 +1,33 @@
+%html{style: "height: 100%"}
+  %head
+    %meta{content: "text/html; charset=utf-8", "http-equiv" => "Content-Type"}
+    %title Email Dashboards
+  %body{style: "margin: 0; padding: 0; height: 100%; background-color: white"}
+    %table{cellpadding: "0", cellspacing: "0", style: "width: 100%; height: 100%; border-spacing: 0"}
+      %tr
+        %td{style: "width: 10%; background-color: #e8e8e8"}
+        %td{style: "width: 80%; background-color: #FDFEFF"}
+          %table{cellpadding: "0", cellspacing: "0",cellpadding: "0", cellspacing: "0",  style: "width: 100%; height: 100%"}
+            %tr
+              %td{colspan: "3", style: "height: 25%"}
+
+            %tr
+              %td{style: "width: 15%;"}
+              %td
+                %table{cellpadding: "0", cellspacing: "0",style: "width: 100%; height: 100%"}
+                  %tr{style: "height: 25%"}
+                    %td{style: "background-color: #E8E8E8; border: 1px solid #00929f; width: 93%"}
+                      %h1{style: "font-family: Helvetica, Arial, sans-serif; font-size: 24px; color: #244a67; padding-left: 20px"}
+                        = yield :head
+                        %span{style: "font-weight: normal"}
+                          = yield :mail
+                  %tr{style: "width: 100%; height: 75%"}
+                    %td{style: "border: 1px solid #00929f"}
+                      .p_content{style: "font-family: Helvetica, Arial, sans-serif ; font-size: 16px; margin-top: 0px; margin-bottom: 5%; padding: 0px; color: #244a67; padding-left: 20px"}
+                        = yield :content
+                    %td
+              %td{style: "width: 15%;"}
+            %tr
+              %td{colspan: "3", style: "height: 25%"}
+
+        %td{style: "width: 10%; background-color: #e8e8e8"}

@@ -1,0 +1,29 @@
+!!!
+%html
+  %head
+    -# %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    -# %meta{:charset => "utf-8"}/
+    -# %meta{:content => "", :name => "description"}/
+    -# %meta{:content => "width=device-width", :name => "viewport"}/
+    -# %meta{:content => "IE=edge,chrome=1", "http-equiv" => "X-UA-Compatible"}/
+    
+    %title DASHBOARDS
+    = stylesheet_link_tag "dashing/minim_dashing"
+    = javascript_include_tag "dashing/minim_dashing"
+    = javascript_include_tag "dashboard"
+    = action_cable_meta_tag
+    = csrf_meta_tags
+    -# %link{:href => "//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700", :rel => "stylesheet", :type => "text/css"}/
+    = favicon_link_tag 'dashboard_favicon.ico'
+  
+  %body
+    #container
+      = yield
+    -# #saving-instructions
+      -# %p
+      -#   Paste the following at the top of
+      -#   %i
+      -#     = params[:dashboard]
+      -#     \.erb
+      -# %textarea#gridster-code
+    -# = link_to "Save this layout", "javascript:void(0)", id: "save-gridster"

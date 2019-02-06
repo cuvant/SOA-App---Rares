@@ -1,0 +1,18 @@
+.form-group
+  .col-lg-12.col-md-12.col-sm-12.col-xs-12
+    %label
+      = "Widget Type"
+
+  .col-lg-4.col-md-4.col-sm-12.col-xs-12
+    .radio-inline{style: "width: 100%; padding: 0px; padding-bottom: 20px;"}
+      - Widget::TYPES.each do |widget_type|
+        = render partial: "widgets/type_check_box", locals: { provider: widget_type[:provider], label: widget_type[:label], type: widget_type[:type] }
+
+  .col-lg-8.col-md-8.col-sm-12.col-xs-12
+    #widget_description
+
+#widget_form_content
+
+:javascript
+  window.dashboard_id = "#{params[:dashboard_id]}";
+  window.dashboards.widgets.set_form();

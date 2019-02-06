@@ -1,0 +1,5 @@
+.widget.widget-meter  
+  %h1.title{"data-bind" => "title"}
+  %input.meter{"data-anglearc" => "250", "data-angleoffset" => "-125", "data-bind-data-max" => "max", "data-bind-data-min" => "min", "data-bind-value" => "value | shortenedNumber", "data-readonly" => "true", "data-width" => "200"}/
+  %p.more-info{"data-bind" => "moreinfo"}
+  %p.updated-at{"data-bind" => "updatedAtMessage"}

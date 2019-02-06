@@ -1,0 +1,27 @@
+.hpanel
+  .panel-body
+    %h4
+      Widgets
+    .hpanel
+      .panel-body{style: "margin-bottom: 20px;"}
+        .table-responsive
+          %table.table.table-striped{id: "widgets_table"}
+            %thead
+              %tr
+                %th No
+                %th Provider
+                %th Type
+                %th Settings
+                %th Bounds
+                %th Alerts
+                %th.text-right Actions
+            %tbody
+              - if widgets.present?
+                - widgets.each_with_index do |widget, index|
+                  = render partial: "widgets/widgets_table/widget", locals: {widget: widget, index: index, dashboard: @dashboard}
+              - else
+                = render partial: "widgets/widgets_table/placeholder_tr"
+      
+      .text-right
+        = link_to "Edit Name", edit_dashboard_path(@dashboard), remote: true, class: "btn btn-sm btn-custom", data: {disable_with: "Edit..."}
+        = link_to "Add Widget", new_dashboard_widget_path(@dashboard), remote: true, class: "btn btn-sm btn-custom", data: {disable_with: "New..."}

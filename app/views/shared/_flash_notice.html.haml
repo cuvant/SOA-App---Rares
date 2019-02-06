@@ -1,0 +1,9 @@
+- if flash[:notice].present? || flash[:alert].present? || flash[:error].present?
+  - [:notice, :alert, :error].each do |key|
+    - next if flash[key].blank?
+    .flash-container
+      .flash{class: key}
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", type: "button"} ×
+        = flash[key]
+
+      - flash[key] = nil

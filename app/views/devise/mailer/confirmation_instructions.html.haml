@@ -1,0 +1,16 @@
+-content_for :head do
+  = t ".head"
+
+-content_for :mail do
+  - if @resource.first_name.present?
+    %span{style: "color: #244a67; text-decoration: none"}
+      = "#{@resource.first_name} #{@resource.last_name}!"
+  - else
+    = link_to "#{@resource.email}!", "#", :style => "color: #244a67; text-decoration: none"
+
+-content_for :content_head do
+  = t ".content_head"
+
+-content_for :content do
+  %p= t ".details"
+  %p= link_to (t ".confirm_account"), confirmation_url(@resource, confirmation_token: @token), :style => "color: #C03035; text-decoration: none"

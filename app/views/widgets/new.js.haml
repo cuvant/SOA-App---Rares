@@ -1,0 +1,6 @@
+$("#widget_content_div").html($("#{ escape_javascript(render partial: "widgets/widget_modal", locals: {action: "New"})}"));
+$("#widget_content_div").removeClass("hidden");
+$("#widget_modal").modal();
+
+$(document).ready(window.ready);
+$(document).on("page:load", window.ready);

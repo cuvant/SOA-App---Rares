@@ -1,0 +1,6 @@
+$("#new_dashboard").html($("#{ escape_javascript(render partial: "dashboards/new_dashboard", locals: {action: "Edit"})}"));
+$("#new_dashboard").removeClass("hidden");
+
+$('#new_dashboard_modal').on('shown.bs.modal', function (e) {
+$("#dashboard_form").enableClientSideValidations();
+}).modal('show');

@@ -1,0 +1,16 @@
+.row.pager
+  .col-md-4.col-md-offset-4
+    .form-group
+      = render "shared/logo"
+
+    = form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+      - add_error(resource.errors.full_messages.to_sentence, 'alert') if resource.errors.present?
+
+      .form-group.input-group.input-group-lg
+        %span.input-group-addon
+          %i.fa.fa-envelope
+        = f.email_field :email, autofocus: true, autocomplete: "off", placeholder: "#{t ".email"}", class: "form-control input-text"
+      .form-group
+        = f.submit (t ".button_resend_unlock"), class: "btn btn-success"
+    .form-group
+      = render "devise/shared/links"

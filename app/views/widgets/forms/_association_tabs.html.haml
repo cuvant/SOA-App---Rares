@@ -1,0 +1,38 @@
+%br
+%ul#widgetAssociationTabs.nav.nav-tabs{:role => "tablist"}
+  %li.active{:role => "presentation"}
+    %a#bounds-settings{"aria-controls" => "bounds", "aria-expanded" => "true", "data-toggle" => "tab", :href => "#bounds", :role => "tab"} Bounds
+  
+  %li{:role => "presentation", onclick: ""}
+    %a#active-alerts-settings{"aria-controls" => "active-alerts", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#active-alerts", :role => "tab"} Alerts
+
+  - if f.object.id.present? && @unverified_alerts.present?
+    %li{:role => "presentation", onclick: ""}
+      %a#pending-alerts-settings{"aria-controls" => "active-alerts", "aria-expanded" => "false", "data-toggle" => "tab", :href => "#pending-alerts-content", :role => "tab"} Pending Verification
+
+#widgetAssociationTabContent.tab-content
+  #bounds.tab-pane.fade.active.in{"aria-labelledby" => "bounds-settings", :role => "tabpanel"}
+    %br
+    .control-group
+      = f.fields_for :bound do |f|
+        = render partial: "bounds/form", locals: { f: f, bounds_text: "'0' and '100'" }
+  
+  #active-alerts.tab-pane.fade{"aria-labelledby" => "active-alerts-settings", :role => "tabpanel"}
+    %br
+    .control-group
+      .alerts
+        = f.fields_for :alerts, validate: false do |builder| 
+          = render partial: "alert_fields", locals: { f: builder }
+    
+    .control-group
+      .col-lg-4.col-md-4.col-sm-4.col-xs-4{style: "margin: 20px 0px 20px 0px;"}
+        = link_to_add_association "Email", f, :alerts, class: 'btn btn-custom btn-xs', wrap_object: Proc.new{ Alerts::Email.new }, data: { association_insertion_node: '.alerts', association_insertion_method: :append}
+        = link_to_add_association "SMS", f, :alerts, class: 'btn btn-custom btn-xs', wrap_object: Proc.new{ Alerts::TextMessage.new }, data: { association_insertion_node: '.alerts', association_insertion_method: :append}
+
+  - if f.object.id.present? && @unverified_alerts.present?
+    #pending-alerts-content.tab-pane.fade{"aria-labelledby" => "pending-alerts-settings", :role => "tabpanel"}
+      %br
+      - @unverified_alerts.each do |alert|
+        .control-group{id: "pending_verification_#{alert.id}", class: "pending_verification"}
+          = render partial: "alerts/verification_content/#{alert.partial_name}", locals: { alert: alert }
+  

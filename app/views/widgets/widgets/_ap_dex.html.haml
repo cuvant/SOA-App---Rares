@@ -1,0 +1,14 @@
+%li{data: {row: "1", col: "1", sizex: "1", sizey: "1"}}
+  .widget.widget-number{id: "widget_#{widget.id}", data: {id: "dashingw#{widget.id}", view: "Number"}}
+    %h1.title
+      = widget.label_type
+
+    %h2.value{id: "widget_#{widget.id}_value"}
+
+    %p.change-rate
+      %br
+
+    %p.more-info
+      = widget.application_name
+
+    %p.updated-at{id: "widget_#{widget.id}_time"}

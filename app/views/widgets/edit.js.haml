@@ -1,0 +1,9 @@
+$("#widget_content_div").html($("#{ escape_javascript(render partial: "widgets/widget_modal", locals: {action: "Edit"})}"));
+$("#widget_content_div").removeClass("hidden");
+
+$('#widget_modal').on('shown.bs.modal', function (e) {
+$("#widget_form").enableClientSideValidations();
+}).modal('show');
+
+$(document).ready(window.ready);
+$(document).on("page:load", window.ready);

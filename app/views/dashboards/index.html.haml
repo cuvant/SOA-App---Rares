@@ -1,0 +1,14 @@
+.wrapper_with_padding
+  #dashboards.clearfix
+    - if @dashboards.present?
+      .row.row-flex.row-flex-wrap
+        = render @dashboards
+      
+      .pull-right
+        = paginate @dashboards
+    - else
+      %h2 Add a Dashboard
+      %p It appears you haven't created any dashboard yet... Lets fix that. Why don't you go ahead and create one.
+      %button= link_to "New Dashboard", new_user_dashboard_path(current_user), remote: true
+
+#delete_dashboard.hidden

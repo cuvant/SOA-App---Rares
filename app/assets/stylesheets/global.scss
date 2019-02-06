@@ -1,0 +1,53 @@
+$dark_gray: #2B2E2E;
+$light_gray: #C0C1C1;
+$green: #33CD99;
+
+	.row-flex, .row-flex > div[class*='col-'] {  
+	    display: -webkit-box;
+	    display: -moz-box;
+	    display: -ms-flexbox;
+	    display: -webkit-flex;
+	    display: flex;
+	    flex:1 1 auto;
+	}
+	
+	.row-flex-wrap {
+		-webkit-flex-flow: row wrap;
+	    align-content: flex-start;
+	    flex:0;
+	}
+
+.dropdown-menu{
+	background: $dark_gray !important;
+	
+}
+.custom_navbar {
+	background: $dark_gray !important;
+	position: fixed;
+	top: 0;
+	margin-bottom: 30px !important;
+	width: 100%;
+	border-bottom: 7px solid $green !important;
+	a {
+		text-decoration: none !important;
+		color: white !important;
+		font-size: 1.1rem !important;
+		line-height: 1.5 !important;
+		margin-left: 1rem !important;
+		&:hover {
+			color: $green !important;
+		}
+	}
+}
+
+// When opening up a modal, keep back of screen in same place
+body.modal-open{
+  overflow: visible;
+  padding-right: 0px !important;
+}
+
+.custom_radio_button{
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 7px !important;
+}

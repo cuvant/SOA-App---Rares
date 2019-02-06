@@ -1,0 +1,30 @@
+%tr{id: "widget_#{widget.id}"}
+  
+  %td{class: "current_number"}
+    = "#{defined?(index) ? index + 1 : 0}"
+  
+  %td
+    = widget.provider
+  
+  %td
+    = widget.label_type
+  
+  %td
+    = render partial: "widgets/settings/#{widget.partial_name}", locals: {widget: widget}
+  
+  %td
+    = raw "Lower <b>#{widget.bound.lower_bound}</b> and Upper <b>#{widget.bound.upper_bound}</b>"
+  
+  %th{id: "alerts_labels_#{widget.id}"}
+    = alert_info(widget.alerts.verified.exists?)
+  
+  %td.text-right
+    - if can?(:edit, widget)
+      = link_to "Edit", edit_dashboard_widget_path(dashboard, widget), remote: true, class: "btn btn-xs btn-custom", data: {disable_with: "Edit..."}
+    - else
+      &nbsp;
+
+    - if can?(:destroy, widget)
+      = link_to "Remove", delete_widget_widget_path(id: widget), remote: true, class: "btn btn-xs btn-danger", data: {disable_with: "Working..."}
+    - else
+      &nbsp;

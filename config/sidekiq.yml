@@ -1,0 +1,5 @@
+---
+  :verbose: false
+  :concurrency: 1
+  production:
+    :concurrency: 3

@@ -1,0 +1,10 @@
+# development:
+#   adapter: redis
+#   url: redis://localhost:6379/0
+# 
+# test:
+#   adapter: async
+# 
+# production:
+#   adapter: redis
+#   url: redis://redistogo:1c94749152e21b2a065d860a0ebe1f9a@jack.redistogo.com:10364/

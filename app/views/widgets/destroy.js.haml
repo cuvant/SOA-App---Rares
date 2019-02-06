@@ -1,0 +1,17 @@
+$("#delete_record_modal").modal('hide');
+$('.modal-backdrop').remove();
+$("#widget_content_div").addClass('hidden');
+
+- if @widget.errors.blank?
+  $('tr#widget_#{@widget.id}').remove();
+
+  $("#widgets_table td.current_number").each(function(index) {
+  $(this).html(index + 1);
+  });
+
+  if($('#widgets_table tr').length == 1){
+  $("#widgets_table > tbody").append("#{j render partial: "widgets/widgets_table/placeholder_tr" }");
+  $("#feed_button").removeClass("btn-success").addClass("btn-warning");
+  }
+
+$(".flash-container-zone").html("#{j render partial: "shared/flash_notice", locals: {flash: flash}}").show().fadeOut(7000);

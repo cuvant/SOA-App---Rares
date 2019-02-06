@@ -1,0 +1,23 @@
+!!!
+%html
+  %head
+    %title DASHBOARDS
+    %link{:href => "http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en", :rel => "stylesheet", :type => "text/css"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+    %meta{name: "viewport", content: "width=device-width, initial-scale=1"}
+    = favicon_link_tag 'dashboard_favicon.ico'
+
+  %body{class: params[:controller].gsub("/", "-")}
+    = render "shared/navbars/header"
+    .content.container{style: "width: 100%;"}
+      = yield
+
+      %script{type: "text/javascript", 'data-turbolinks-eval'=>false}
+        var string = "#{(j (yield :scripts))}";
+        eval(string);
+        window.dashboards.shared.init();
+    
+    .flash-container-zone
+      = render 'shared/flash_notice'

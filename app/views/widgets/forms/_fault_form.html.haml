@@ -1,0 +1,51 @@
+= form_for @widget, validate: true, remote: true, html: {id: "widget_form"} do |f|
+  = f.hidden_field :type
+  = f.hidden_field :dashboard_id
+  
+  .row
+    .control-group
+      .col-lg-12.col-md-12.col-sm-12.col-xs-12
+        #credential_errors.hidden
+    .clear
+    
+    .control-group
+      .col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+        = f.label :application_name, "App Name", class: "control-label"
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6
+        = f.text_field :application_name, class: "form-control", autocomplete: :off
+      .col-lg-4.col-md-4.col-sm-4.col-xs-4
+        %div{class: "control-label", style: "text-align: left;"}
+          = "e.g. 'Dashboards'"
+    .clear
+    
+    .control-group
+      
+      .col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+        = f.label :project_id, "Project Id", class: "control-label"
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6
+        = f.number_field :project_id, class: "form-control", autocomplete: :off
+      .col-lg-4.col-md-4.col-sm-4.col-xs-4
+        %div{class: "control-label", style: "text-align: left;"}
+          = "e.g. '3241'"
+    .clear
+          
+    .control-group
+      .col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+        = f.label :access_token, "Access Token", class: "control-label"
+      .col-lg-6.col-md-6.col-sm-6.col-xs-6
+        = f.text_field :access_token, class: "form-control", autocomplete: :off
+      .col-lg-4.col-md-4.col-sm-4.col-xs-4
+        %div{class: "control-label", style: "text-align: left;"}
+          = "e.g. 'kEdnop2x432qq9fGx'"
+        
+    .clear
+    
+  = render partial: "widgets/forms/association_tabs", locals: { f: f }
+    
+  %br
+  .row
+    .text-center
+      .control-group.text-center
+        .controls.inline
+          = f.submit "Save Widget", class: "btn btn-custom", data: {disable_with: "Working..."}, id: "widget_submit_button"
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Cancel

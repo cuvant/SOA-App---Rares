@@ -1,0 +1,26 @@
+- if record.is_a?(Widget)
+  - description = "Are you sure you want to remove '#{record.provider} #{record.label_type}' widget?"
+  - title = "Widget"
+- elsif record.is_a?(Dashboard)
+  - description = "Are you sure you want to remove '#{record.name}' dashboard?"
+  - title = "Dashboard"
+  
+#delete_record_modal.modal.fade.hmodal-danger{"aria-hidden" => "true", :role => "dialog", :style => "display: none;", :tabindex => "-1", remote: true}
+  .modal-dialog.modal-lg{:role => "document"}
+    .modal-content
+      .color-line
+      .modal-header.set-padding-top-10.set-padding-bottom-10
+        %h4.modal-title{style: "text-align: left;"}
+          = "Delete #{title}"
+      .modal-body
+        %h3.text-center
+          = description
+        %br
+        .text-center
+          = link_to "Yes, remove!", where_to_go, remote: as_js, method: :delete, class: "btn btn-danger", data: {disable_with: "Working..."}
+          %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} No, keep widget
+
+:javascript
+  $('#delete_widget_modal').on('hidden.bs.modal', function (e) {
+    $(this).remove();
+  });

@@ -1,0 +1,13 @@
+.col-lg-2.col-md-2.col-sm-6.col-xs-6{style: "margin-bottom: 20px;"}
+  = f.label :bounds, "Bounds", class: "control-label"
+.col-lg-3.col-md-3.col-sm-6.col-xs-6
+  = f.number_field :lower_bound, validate: true, placeholder: "Lower bound...", class: "form-control", autocomplete: :off
+
+.col-lg-3.col-md-3.col-sm-6.col-xs-6
+  = f.number_field :upper_bound, validate: true, placeholder: "Upper bound...", class: "form-control", autocomplete: :off
+  
+.col-lg-4.col-md-4.col-sm-4.col-xs-4
+  %div{class: "control-label", style: "text-align: left;"}
+    = "e.g. #{bounds_text}"
+
+.clear

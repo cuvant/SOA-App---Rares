@@ -1,0 +1,25 @@
+- if @widget.errors.blank? && @error.blank?
+  $('#widget_modal').modal('hide');
+  $('.modal-backdrop').remove();
+  $("#widget_content_div").addClass('hidden');
+
+  var currentIndex = $("#widgets_table tr#widget_#{@widget.id}").index();
+  $("#widgets_table tbody tr#widget_#{@widget.id}").remove();
+  
+  if(currentIndex < $("#widgets_table tbody tr").length ){
+  $("#widgets_table tbody tr").eq(currentIndex).before("#{j render partial: "widgets/widgets_table/widget", locals: {widget: @widget, dashboard: @widget.dashboard}}");
+  } else {
+  console.log("test");
+  $("#widgets_table").append("#{j render partial: "widgets/widgets_table/widget", locals: {widget: @widget, dashboard: @widget.dashboard}}");
+  }
+
+  $("#widgets_table td.current_number").each(function(index) {
+  $(this).html(index + 1);
+  });
+  
+  $(".flash-container-zone").html("#{j render partial: "shared/flash_notice", locals: {flash: flash}}").show().fadeOut(7000);
+
+- elsif @error.present?
+  $('.modal-content').waitMe("hide");
+  $('#credential_errors').html("#{@error}")
+  $('#credential_errors').removeClass('hidden');

@@ -1,0 +1,22 @@
+#new_dashboard_modal.modal.fade{:role => "dialog", :tabindex => "-1", :style => "display: none;"}
+  .modal-dialog{:role => "document"}
+    .modal-content
+      .color-line
+      
+      .modal-header.set-padding-top-10.set-padding-bottom-10
+        %h4.modal-title
+          = "#{action} Dashboard"
+      
+      
+      .modal-body
+        = form_for @dashboard, validate: true, remote: true, html: {id: "dashboard_form"} do |f|
+          = render partial: "form", locals: {f: f}
+            
+          .text-center{style: "margin-top: 20px;"}
+            = f.submit "Save", class: "btn btn-medium btn-custom", id: "submit_new_player_button"
+            %button.btn.btn-default{"data-dismiss" => "modal", :type => "button"} Close
+
+:javascript
+  $('#new_dashboard_modal').on('hidden.bs.modal', function (e) {
+    $(this).remove();
+  });

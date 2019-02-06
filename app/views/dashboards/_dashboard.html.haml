@@ -1,0 +1,15 @@
+.col-sm-4.col-md-4.col-lg-4.col-xl-4
+  = link_to "#{dashboard.widgets.size > 0 ? dashboard_path(id: dashboard) : edit_dashboard_path(id: dashboard)}", target: '_blank' do
+    .panel.panel-default.dashboard.flex-col
+      %p.name
+        = dashboard.name
+      
+      %p.description
+        = dashboard.description
+      
+      %p.widgets
+        = dashboard.widgets_text
+      
+      .bottom_right
+        = link_to "Edit", edit_dashboard_path(id: dashboard, page: params[:page]), data: {disable_with: "Working..."}, class: "btn btn-xs btn-custom"
+        = link_to "Delete", delete_dashboard_dashboard_path(id: dashboard.id), remote: true, data: {disable_with: "Working..."}, class: "btn btn-danger btn-xs"

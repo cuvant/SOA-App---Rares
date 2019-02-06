@@ -1,0 +1,41 @@
+#dashboards {
+	.dashboard {
+		background: $dark_gray;
+		width: 100%;
+		// min-height: 150px;
+		margin: 1rem 1%;
+		padding: 1.5rem 2.5%;
+		float: left;
+		border-radius: .4rem;
+		position: relative;
+		.name {
+			color: white;
+			margin: 0;
+			letter-spacing: 1px;
+		}
+		.description{
+			margin-top: 20px;
+			color: white;
+			letter-spacing: 1px;
+		}
+		.widgets {
+			bottom: .25rem;
+			left: 8.5%;
+			color: $green;
+			font-size: 1.20rem;
+			margin-bottom: 50px;
+		}
+	}
+}
+
+.bottom_right{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+
+.btn-custom {
+    background-color: #33CD99;
+    border-color: #33CD99;
+    color: #FFFFFF
+}

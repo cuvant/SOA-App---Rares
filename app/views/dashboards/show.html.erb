@@ -1,0 +1,27 @@
+<script>
+  $(function() {
+    if(<%= @dashboard.layout.present? %>){
+      Dashing.gridsterLayout(JSON.stringify(<%= raw @dashboard.layout.to_json %>));
+    }
+    window.dashboard_id = <%= "#{@dashboard.id}" %>
+  });
+</script>
+
+<div class="gridster">
+  <ul>
+    <%= render partial: "widgets/widget", collection: @dashboard.widgets, as: :widget %>
+  </ul>
+  <center>
+    <div style="font-size: 12px">
+      <%= "Auto Refresh is set to 30s." %>
+      <%= link_to 'Force Refresh!', dashboard_path(@dashboard), style: "color: red;", id: "refresh_link" %>
+    </div>
+  </center>
+</div>
+
+<% if false %>
+  <script>
+    window.dashboards.dashboard_channel.create_dashboard_subscription(<%= "#{@dashboard.id}"%>);
+  </script>
+<% end %>
+  

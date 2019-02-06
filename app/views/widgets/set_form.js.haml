@@ -1,0 +1,6 @@
+$("#widget_description").html("#{j render partial: "widgets/descriptions/#{@widget.partial_name}_description"}");
+$("#widget_form_content").html("#{j render partial: "widgets/forms/#{@widget.partial_name}_form"}");
+$("#center_text_button").html("");
+$("#widget_form").enableClientSideValidations();
+
+window.dashboards.cocoon.init_callback();

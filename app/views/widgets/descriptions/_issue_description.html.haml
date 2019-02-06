@@ -1,0 +1,16 @@
+%div{ class: "bs-callout bs-callout-warning" , style: "margin-top: 0px;"}
+  %i{ class: "icon-question-sign" }
+    = raw "<b>GitHub Issues Widget</b> allows the following customization:"
+    %br
+    = raw "<b>Repository</b> - Represents the app's GitHub repo."
+    %br
+    = raw "<b>User</b> - Represents the ower of the repository (in case of company repository, the company will represent the user)."
+    %br
+    = raw "<b>Access Token</b>- Represents the generated"
+    = link_to "GitHub Access Token (API KEY).", "https://help.github.com/articles/creating-a-personal-access-token-for-the-command-line/", target: "_blank"
+    %br
+    = raw "<b>Labels</b> - A list of comma separated label names. Example: <b>'bug,ui,need review'</b>, default is <b>' ' (empty)</b>."
+    %br
+    = raw "<b>Filter</b> - Indicates which sorts of issues to return. Can be one of: <b>'assigned'</b>, <b>'created'</b>, <b>'mentioned'</b>, <b>'subscribed'</b>, <b>'all'</b>. The default is <b>'all'</b>."
+    %br
+    = raw "<b>State</b> - Indicates the state of the issues to return. Can be either: <b>'open'</b>, <b>'closed'</b>, <b>'all'</b>, default is <b>'all'</b>."

@@ -1,0 +1,9 @@
+-content_for :head do
+  = "Confirm Alert Email"
+
+-content_for :mail do
+  = ""
+
+-content_for :content do
+  %p= "Click on the following link to confirm email alert, created at #{@alert.created_at.strftime("%I:%M%p %d/%m/%y")}."
+  %p= link_to "Confirm Email Address", verify_alert_url(alert_id: @alert.id, alert_token: @alert.confirmation_token), :style => "color: #C03035; text-decoration: none"

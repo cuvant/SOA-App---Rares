@@ -1,0 +1,4 @@
+= render partial: "widgets/widgets/#{widget.partial_name}", locals: {widget: widget}
+
+:coffeescript
+  window.onload = window.dashboards.widgets.set_scheduler("#{widget.id}", "#{api_get_widget_data_path(widget.id)}")

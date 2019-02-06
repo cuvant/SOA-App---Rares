@@ -1,0 +1,23 @@
+.nested-fields
+  = f.hidden_field :type
+
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2{style: "margin-bottom: 20px;"}
+    = f.label :type, f.object.label_type, class: "control-label"
+    
+  .col-lg-4.col-md-4.col-sm-4.col-xs-4
+    = render partial: "alerts/#{f.object.partial_name}", locals: { f: f }
+    
+    - if f.object.id.present? && f.object.verified == false
+      .pending-verification-text{id: "pending-verification-text_#{f.object.id}"}
+        = link_to 'Pending Verification', 'javascript:void(0)', onclick: "$('#pending-alerts-settings').click();"
+
+  .col-lg-3.col-md-3.col-sm-3.col-xs-3
+    = f.number_field :occurring_rate, placeholder: "Occurring Rate...", class: "form-control", autocomplete: :off
+
+  .col-lg-2.col-md-2.col-sm-2.col-xs-2
+    = f.select :time_type, [["minutes", "minute"], ["hours", "hour"]], {}, {class: "form-control"}
+
+  .col-lg-1.col-md-1.col-sm-1.col-xs-1
+    = link_to_remove_association "", f, class: "fa fa-times-circle-o", id: "rm_association_link"
+
+  .clear

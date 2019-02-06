@@ -1,0 +1,17 @@
+.col-lg-2.col-md-2.col-sm-2.col-xs-2{style: "margin-bottom: 20px;"}
+  = label_tag :type, alert.label_type, class: "control-label"
+
+.col-lg-2.col-md-2.col-sm-2.col-xs-2
+  = label_tag :phone_number, alert.phone_number, class: "control-label"
+  
+.col-lg-2.col-md-2.col-sm-2.col-xs-2
+  = number_field_tag :confirmation_token, nil, placeholder: 'token', class: "form-control", id: "confirmation_token_#{alert.id}", oninput: "window.dashboards.alerts.check_token(this, #{alert.id});"
+
+.col-lg-3.col-md-3.col-sm-3.col-xs-3.alert-links{id: "errors_#{alert.id}"}
+
+.col-lg-3.col-md-3.col-sm-3.col-xs-3
+  .alert-links.pull-right
+    = link_to 'Confirm', 'javascript:void(0)', class: 'btn btn-xs btn-custom', onclick: "window.dashboards.alerts.confirm_token(#{alert.id},#{alert.widget_id});", id: "text_message_confirmation_#{alert.id}"
+    = link_to 'Resend Code', 'javascript:void(0)', class: 'btn btn-xs btn-custom', style: "margin-left: 10px;", onclick: "window.dashboards.alerts.resend_token(#{alert.id},#{alert.widget_id})"
+
+.clear
